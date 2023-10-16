@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% include 'navgestor.html' %}
+
+{% block content %}
+<div class="container text-center mt-3 mb-5">
+    <h1>Cardapio</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="container text-center">
+                {% for reparticao in reparticoes %}
+                <h2>{{ reparticao.reparticao }}</h2>
+
+                <div class="row">
+
+                        {% for item in cardapios %}
+                        {% if item.reparticao == reparticao %}
+                        <div class="col-1"></div>
+                        <div class="col-2 text-left">
+                            <p style="text-align: left !important;">{{ item.nome }}</p>
+                        </div>
+                        <div class="col-4">
+                            <p style="text-align: left !important;">{{ item.descricao }}</p>
+                        </div>
+                        <div class="col-2">
+                            <p>R$ {{ '%.2f'|format(item.valor) }}</p>
+                        </div>
+                        <div class="col-2">
+                            <button>Editar</button>
+                            <button>Deletar</button>
+                        </div>
+
+                        <div class="col-1"></div>
+
+                        {% endif %}
+                        {% endfor %}
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

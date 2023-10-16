@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        {% from "_formhelpers.html" import render_field %}
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+    <div class="text-center h1 text-success">Pagina de Login</div>
+    
+
+
+    <form method="post" enctype="multipart/form-data">
+        {{form.csrf_token}}
+        <div>
+            {{ render_field(form.username, class="form-control") }}
+            {{ render_field(form.password, class="form-control") }}
+        </div>
+        {% include '_flash_msg.html' %}
+        <button type="button" class="btn btn-warning" onclick="window.location.href='/registrar'">Cadastrar</button>
+        <button type="submit" class="btn btn-success">Login</button>
+
+    </form>
+    <div class="col-md-4"></div>
+</div>
+</div>
+
+{% endblock content %}
